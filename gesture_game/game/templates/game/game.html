@@ -2,19 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gesture Controlled Game</title>
+    <link rel="stylesheet" href="{% static 'game/css/style.css' %}">
 </head>
 <body>
     <h1>Gesture Controlled Game</h1>
-    <canvas id="gameCanvas" width="750" height="750"></canvas>
-    <script>
-        const ws = new WebSocket('ws://' + window.location.host + '/ws/game/');
-
-        ws.onmessage = function(event) {
-            const data = JSON.parse(event.data);
-            console.log('Gesture:', data.message);
-        };
-    </script>
+    <div id="pygame-container">
+        <!-- Pygame will render inside this div -->
+    </div>
+    <script src="{% static 'game/js/main.js' %}"></script>
 </body>
 </html>
