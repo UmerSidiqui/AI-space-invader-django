@@ -7,6 +7,7 @@ import random
 import cv2
 import mediapipe as mp
 import math
+from django.http import StreamingHttpResponse
 
 def game_view(request):
     if request.method == "GET":
@@ -356,3 +357,7 @@ def game_view(request):
         main_menu()
 
     return render(request, 'game/game.html')
+
+
+def video_feed(request):
+    return StreamingHttpResponse(game_view(), content_type='multipart/x-mixed-replace; boundary=frame')
